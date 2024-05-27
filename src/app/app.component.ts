@@ -36,7 +36,7 @@ export class AppComponent implements OnInit{
     this.loading = true;
     this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
         .pipe(
-          delay(1500)
+          delay(500)
         )
         .subscribe(
           response => {
@@ -64,5 +64,14 @@ export class AppComponent implements OnInit{
           this.todoTitle = '';
         }
       )
+  }
+
+  removeTodo(id: number | undefined): void {
+
+    this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+    .subscribe( response => {
+      console.log(response);
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    })
   }
 }

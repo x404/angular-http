@@ -30,7 +30,10 @@
             <button class="btn btn-danger ms-1"
                     (click)="removeTodo(todo.id)"
             >Удалить</button>
-            <button class="btn btn-primary ms-1" [disabled]="todo.completed">Завершить</button>
+            <button class="btn btn-primary ms-1"
+                    [disabled]="todo.completed"
+                    (click)="completeTodo(todo.id)"
+            >Завершить</button>
           </span>
         </div>
       </div>
